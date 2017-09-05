@@ -7,6 +7,10 @@ public class Inventory : MonoBehaviour {
 
     public GameObject inventoryImage;
     // Use this for initialization
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     void Start () {
 		
 	}
