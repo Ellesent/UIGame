@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
 
         else
         {
-            //transform.LookAt(target);
+
             float distance = Vector2.Distance(transform.position, target.position);
             float movementDistance = move * Time.deltaTime;
             transform.position =  Vector2.MoveTowards(transform.position, target.position, movementDistance);
