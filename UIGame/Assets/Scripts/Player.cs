@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     #region Variables
 
-    float speed = 5.0f;
+    float speed = 7.0f;
     public Inventory inventory;
     bool hiding;
     Rigidbody2D rb;
@@ -71,19 +71,28 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hide")
         {
-            Debug.Log("Staying in collide box");
             canhide = true;
            
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hide")
+        {
+            canhide = false;
 
-        private void Hide()
+        }
+    }
+
+
+    private void Hide()
         {
             Debug.Log("hide");
             GetComponent<SpriteRenderer>().enabled = false;
             hiding = true;
-            //rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            GetComponent<CircleCollider2D>().enabled = false;
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
         private void UnHide()
@@ -91,6 +100,7 @@ public class Player : MonoBehaviour
             Debug.Log("not hide");
             GetComponent<SpriteRenderer>().enabled = true;
             hiding = false;
-            //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
+            GetComponent<CircleCollider2D>().enabled = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
     }

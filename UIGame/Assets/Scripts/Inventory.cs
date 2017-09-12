@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour {
 
         for (int i = 0; i < inventoryImage.transform.childCount; i++)
         {
-            if (inventoryImage.transform.GetChild(i).GetComponent<Image>().sprite == null)
+            if (inventoryImage.transform.GetChild(i).GetComponent<Image>()!= null && inventoryImage.transform.GetChild(i).GetComponent<Image>().sprite == null)
             {
                 inventoryImage.transform.GetChild(i).GetComponent<Image>().sprite = x;
             }
