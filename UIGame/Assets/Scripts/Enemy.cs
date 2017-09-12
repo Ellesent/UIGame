@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour {
             // Lost player, go searching
             if (distance > 20f)
             {
+                detectTime = 20f;
                 playerFound = false;
                 detectMode = true;
 
