@@ -20,11 +20,17 @@ public class Enemy : MonoBehaviour {
     float detectTime = 20f;
 
     float move = 4;
+
+    bool playerFound = false;
+
+    float whichDirection = 0;
+
 	// Use this for initialization
 	void Start () {
 
         transform.position = waypoints[0].position;
         currentWaypoint = waypoints[0];
+        target = null;
 		
 	}
 	
@@ -36,70 +42,85 @@ public class Enemy : MonoBehaviour {
             Walk();
         }
 
-        else if (target != null && !player.GetComponent<Player>().IsHiding() && !detectMode)
+        else if (target != null  && playerFound)
         {
-
+            float origx = transform.position.x;
             float distance = Vector2.Distance(transform.position, target.position);
             float movementDistance = move * Time.deltaTime;
             transform.position =  Vector2.MoveTowards(transform.position, target.position, movementDistance);
+            float newx = transform.position.x;
+            whichDirection = newx - origx;
+            Debug.Log("WHICHDIRECTION = " + whichDirection);
+
+            // Lost player, go searching
+            if (distance > 20f)
+            {
+                playerFound = false;
+                detectMode = true;
+
+            }
         }
 
-        else if (detectMode || player.GetComponent<Player>().IsHiding())
+        else if (detectMode && !playerFound)
         {
             DetectMode();
         }
 		
 	}
 
-//TODO Use raycasts instead of collision for player detection
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-      if (collision.gameObject.tag == "Player" && !player.GetComponent<Player>().IsHiding())
-        {
-            detectMode = false;
+        RayCastPlayer();
+    }
+
+    //TODO Use raycasts or "distance cone" instead of collision for player detection
+
+    void RayCastPlayer()
+    {
+       
+        Vector2 rayDirection = player.transform.position - transform.position;
+
+        float distance = 15f;
+        Debug.DrawRay(transform.position, rayDirection * distance, Color.red, 2f, false);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, distance, LayerMask.GetMask("Player"));
+
+        if (hit && !player.GetComponent<Player>().IsHiding())
+        { 
+            
             target = player.transform;
-        }
-    }
+            playerFound = true;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && !player.GetComponent<Player>().IsHiding())
+            
+        }
+
+        if (hit && player.GetComponent<Player>().IsHiding())
         {
-            detectMode = false;
-            target = player.transform;
+           
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            target = null;
-            detectMode = true;
-        }
-    }
-
-
-    //TODO will be used for when enemy loses player, but it still searching for player
+   
     private void DetectMode()
     {
-        Vector3 relative = transform.InverseTransformPoint(player.transform.position);
-
+        Debug.Log("detect mode on");
         detectTime -= Time.deltaTime;
-
-        if (relative.x < 0.0 && detectTime > 0)
+        if (whichDirection < 0)
         {
             transform.position -= new Vector3(0.05f, 0);
         }
-        else if (relative.x > 0.0 && detectTime > 0)
+        else
         {
             transform.position += new Vector3(0.05f, 0);
         }
+        
         if (detectTime < 0)
         {
             Debug.Log("Detect Mode done");
+            target = null;
             detectMode = false;
         }
+
+       
     }
 
     private void Walk()

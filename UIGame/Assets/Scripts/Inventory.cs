@@ -33,13 +33,20 @@ public class Inventory : MonoBehaviour {
 
     void AddImagetoInventory(string sprite)
     {
-        Sprite x = Resources.Load<Sprite>("Sprites/pinetree");
-
+        Debug.Log("Sprites/" + sprite);
+        Sprite x = Resources.Load<Sprite>("Sprites/" + sprite);
+        
+        if (x == null)
+        {
+           
+        }
         for (int i = 0; i < inventoryImage.transform.childCount; i++)
         {
             if (inventoryImage.transform.GetChild(i).GetComponent<Image>()!= null && inventoryImage.transform.GetChild(i).GetComponent<Image>().sprite == null)
             {
+                Debug.Log("Got in");
                 inventoryImage.transform.GetChild(i).GetComponent<Image>().sprite = x;
+                break;
             }
         }
     }

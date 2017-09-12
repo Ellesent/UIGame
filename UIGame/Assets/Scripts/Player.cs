@@ -28,6 +28,10 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (inventory == null)
+        {
+            inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        }
         hiding = false;
         rb = GetComponent<Rigidbody2D>();
 
@@ -60,11 +64,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Pickup")
-        {
-            inventory.AddItem(collision.gameObject.name);
-            Destroy(collision.gameObject);
-        }
+        
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -73,6 +74,11 @@ public class Player : MonoBehaviour
         {
             canhide = true;
            
+        }
+        if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(KeyCode.Space))
+        {
+            inventory.AddItem(collision.gameObject.name);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -87,20 +93,18 @@ public class Player : MonoBehaviour
 
 
     private void Hide()
-        {
-            Debug.Log("hide");
+    { 
             GetComponent<SpriteRenderer>().enabled = false;
             hiding = true;
             GetComponent<CircleCollider2D>().enabled = false;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
-        }
+    }
 
         private void UnHide()
         {
-            Debug.Log("not hide");
             GetComponent<SpriteRenderer>().enabled = true;
             hiding = false;
             GetComponent<CircleCollider2D>().enabled = true;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
-    }
+}
