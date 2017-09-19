@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     bool canhide = false;
 
+    Image terrorBar;
+
     #endregion
 
     #region Properties
@@ -30,6 +32,15 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        try
+        {
+            terrorBar = GameObject.Find("TerrorBar").GetComponent<Image>();
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("Couldn't find terrorBar, moving on");
+        }
 
         if (inventory == null)
         {
@@ -67,6 +78,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && inventory.GetNumEdibles() > 0)
+        {
+            terrorBar.fillAmount += 0.3f;
+            inventory.RemovedNumEdibles();
+        }
     }
 
     private void FixedUpdate()
@@ -80,6 +97,7 @@ public class Player : MonoBehaviour
 
     }
 
+    // TODO don't check for input in OnTriggerStay
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Hide")
@@ -87,9 +105,16 @@ public class Player : MonoBehaviour
             canhide = true;
 
         }
+
         if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(KeyCode.Space))
         {
             inventory.AddItem(collision.gameObject.name);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Edible" && Input.GetKeyDown(KeyCode.Space))
+        {
+            inventory.AddNumEdibles();
             Destroy(collision.gameObject);
         }
     }

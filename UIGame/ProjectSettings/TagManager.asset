@@ -8,6 +8,9 @@ TagManager:
   - Hide
   - Enemy
   - Door
+  - Edible
+  - Pipe
+  - Valve
   layers:
   - Default
   - TransparentFX
