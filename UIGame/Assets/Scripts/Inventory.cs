@@ -6,6 +6,12 @@ public class Inventory : MonoBehaviour {
     List<string> inventory = new List<string>();
 
     public GameObject inventoryImage;
+
+    public bool IsItemInInventory(string item)
+    {
+        Debug.Log("Inventory: " + inventory);
+        return inventory.Contains(item);
+    }
     // Use this for initialization
     private void Awake()
     {
@@ -20,17 +26,20 @@ public class Inventory : MonoBehaviour {
 		
 	}
 
+    // Adds the item based on the name of the game object
     public void AddItem(string item)
     {
         inventory.Add(item);
         AddImagetoInventory(item);
     }
 
+    // Removes the item based on the name of the game object
     public void RemoveItem(string item)
     {
         inventory.Remove(item);
     }
 
+    // Adds image to inventory based on the name of the sprite in the Resources folder
     void AddImagetoInventory(string sprite)
     {
         Debug.Log("Sprites/" + sprite);

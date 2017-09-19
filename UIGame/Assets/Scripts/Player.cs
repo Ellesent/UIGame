@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     bool hiding;
     Rigidbody2D rb;
     bool canhide = false;
+
     #endregion
 
     #region Properties
@@ -28,10 +30,20 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         if (inventory == null)
         {
-            inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+            try
+            {
+                inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+            }
+            catch (NullReferenceException)
+            {
+                Debug.Log("Can't find inventory, moving on");
+            }
+
         }
+
         hiding = false;
         rb = GetComponent<Rigidbody2D>();
 
@@ -64,7 +76,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
 
     }
 
@@ -73,7 +85,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Hide")
         {
             canhide = true;
-           
+
         }
         if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(KeyCode.Space))
         {
@@ -93,18 +105,20 @@ public class Player : MonoBehaviour
 
 
     private void Hide()
-    { 
-            GetComponent<SpriteRenderer>().enabled = false;
-            hiding = true;
-            GetComponent<CircleCollider2D>().enabled = false;
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        hiding = true;
+        GetComponent<CircleCollider2D>().enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
-        private void UnHide()
-        {
-            GetComponent<SpriteRenderer>().enabled = true;
-            hiding = false;
-            GetComponent<CircleCollider2D>().enabled = true;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    private void UnHide()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        hiding = false;
+        GetComponent<CircleCollider2D>().enabled = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
     }
+
 }

@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System; 
 
 public class Enemy : MonoBehaviour {
 
     public GameObject player;
 
     public Transform[] waypoints;
+
+    Image terrorBar;
 
     Transform currentWaypoint;
 
@@ -31,6 +35,15 @@ public class Enemy : MonoBehaviour {
         transform.position = waypoints[0].position;
         currentWaypoint = waypoints[0];
         target = null;
+
+        try
+        {
+            terrorBar = GameObject.Find("TerrorBar").GetComponent<Image>();
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("Couldn't find terrorBar, moving on");
+        }
 		
 	}
 	
@@ -51,9 +64,10 @@ public class Enemy : MonoBehaviour {
             float newx = transform.position.x;
             whichDirection = newx - origx;
             Debug.Log("WHICHDIRECTION = " + whichDirection);
+            terrorBar.fillAmount -= 0.001f;
 
             // Lost player, go searching
-            if (distance > 20f)
+            if (distance > 15f)
             {
                 detectTime = 20f;
                 playerFound = false;
@@ -81,7 +95,7 @@ public class Enemy : MonoBehaviour {
        
         Vector2 rayDirection = player.transform.position - transform.position;
 
-        float distance = 15f;
+        float distance = 12f;
         Debug.DrawRay(transform.position, rayDirection * distance, Color.red, 2f, false);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, distance, LayerMask.GetMask("Player"));
 

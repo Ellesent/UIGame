@@ -658,9 +658,10 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Instructions:\nUse A and D, or left and right arrow keys to move\nUse Space
-    to interact with the world (currently used for hiding and picking up items)\n\nCurrently
-    there is a test enemy and test closet - \nmake the enemy chase you, hide in the
-    closet when he is not looking, and run out when he is past it"
+    to interact with the world (currently used for hiding and picking up items)\nUse
+    Tab to open and close the inventory\n\nCurrently there is a test enemy and test
+    closet - \nmake the enemy chase you, hide in the closet when he is not looking,
+    and run out when he is past it"
 --- !u!222 &1970839422
 CanvasRenderer:
   m_ObjectHideFlags: 0
