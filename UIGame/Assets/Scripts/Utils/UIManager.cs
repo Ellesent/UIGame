@@ -41,7 +41,10 @@ public class UIManager : MonoBehaviour {
 
    public void ButtonClickScene(string scene)
     {
+        SceneData.previousScene = SceneManager.GetActiveScene().name;
+        SceneData.currentScene = scene;
         SceneManager.LoadScene(scene);
+      
     }
 
     public void ButtonClickQuit()

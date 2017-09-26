@@ -5,19 +5,22 @@ using System.Collections;
 
 public class LockedTypes
 {
-     enum LockedStatus { Locked, NotLocked}
+    public enum LockedStatus { Locked, NotLocked}
 }
 
 public class Items
 {
-    enum ItemStatus { PickedUp, Gone}
+    public enum ItemStatus { NotPickedUp, PickedUp}
 }
 
 
 public static class ItemManager
 {
-    static Dictionary<string, LockedTypes> lockedItems = new Dictionary<string, LockedTypes>();
+   public static Dictionary<string, LockedTypes.LockedStatus> lockedItems = new Dictionary<string, LockedTypes.LockedStatus>();
 
-    static Dictionary<string, Items> pickupItems = new Dictionary<string, Items>();
+   public static Dictionary<string, Items.ItemStatus> pickupItems = new Dictionary<string, Items.ItemStatus>();
+
+
+    
 
 }

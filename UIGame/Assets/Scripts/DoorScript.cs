@@ -7,12 +7,17 @@ using System;
 public class DoorScript : MonoBehaviour {
 
     public string sceneName;
-    public bool isLocked;
-
+    //public bool isLocked;
+    public LockedTypes.LockedStatus locked;
     Inventory inventory;
 	// Use this for initialization
 	void Start () {
 
+        if (!ItemManager.lockedItems.ContainsKey(name))
+        {
+            ItemManager.lockedItems.Add(name, locked);
+        }
+        //ItemManager.lockedItems.Add(name, isLocked);
         if (inventory == null)
         {
             try
@@ -30,6 +35,7 @@ public class DoorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		
 	}
 
@@ -38,8 +44,10 @@ public class DoorScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
         {
-            if (!isLocked)
+            if (ItemManager.lockedItems[name] == LockedTypes.LockedStatus.NotLocked)
             {
+                SceneData.previousScene = SceneManager.GetActiveScene().name;
+                SceneData.currentScene = sceneName;
                 SceneManager.LoadScene(sceneName);
             }
             else
@@ -48,7 +56,7 @@ public class DoorScript : MonoBehaviour {
                 if (inventory.IsItemInInventory("tempkey"))
                 {
                     inventory.RemoveItem("tempkey");
-                    isLocked = false;
+                    ItemManager.lockedItems[name] = LockedTypes.LockedStatus.NotLocked;
                 }
             }
         }

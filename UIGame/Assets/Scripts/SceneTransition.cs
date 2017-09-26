@@ -20,6 +20,8 @@ public class SceneTransition : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            SceneData.previousScene = SceneManager.GetActiveScene().name;
+            SceneData.currentScene = sceneName;
             SceneManager.LoadScene(sceneName);
         }
     }

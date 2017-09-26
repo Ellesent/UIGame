@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     bool canhide = false;
 
     Image terrorBar;
-
     #endregion
 
     #region Properties
@@ -32,7 +31,8 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        StartPosition();
+       
         try
         {
             terrorBar = GameObject.Find("TerrorBar").GetComponent<Image>();
@@ -109,7 +109,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(KeyCode.Space))
         {
             inventory.AddItem(collision.gameObject.name);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Pickupable>().Destroy();
+           
         }
 
         if (collision.gameObject.tag == "Edible" && Input.GetKeyDown(KeyCode.Space))
@@ -143,6 +144,23 @@ public class Player : MonoBehaviour
         hiding = false;
         GetComponent<CircleCollider2D>().enabled = true;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+    }
+
+    void StartPosition()
+    {
+        if (SceneData.currentScene == "InteriorHouse")
+        {
+            if (SceneData.previousScene == "Room1")
+            {
+                transform.position = GameObject.Find("Spawn1").transform.position;
+            }
+
+            else if (SceneData.previousScene == "Room2")
+            {
+                transform.position = GameObject.Find("Spawn2").transform.position;
+            }
+        }
 
     }
 
