@@ -5,5 +5,5 @@ using UnityEngine;
 public static class SceneData
 {
    public static string previousScene;
-    public static string currentScene;
+    public static string currentScene = "GameScene1";
 }
