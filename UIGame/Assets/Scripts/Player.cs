@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     {
         if (canhide)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(InputFields.interact))
             {
 
                 if (hiding)
@@ -88,7 +88,14 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(transform.position + new Vector3(Input.GetAxis("Horizontal"), 0) * speed * Time.deltaTime);
+        if (Input.GetKey(InputFields.left))
+        {
+            rb.MovePosition(transform.position + new Vector3(-1, 0) * speed * Time.deltaTime);
+        }
+        else if (Input.GetKey(InputFields.right))
+        {
+            rb.MovePosition(transform.position + new Vector3(1, 0) * speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -106,14 +113,14 @@ public class Player : MonoBehaviour
 
         }
 
-        if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(KeyCode.Space))
+        if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(InputFields.interact))
         {
             inventory.AddItem(collision.gameObject.name);
             collision.gameObject.GetComponent<Pickupable>().Destroy();
            
         }
 
-        if (collision.gameObject.tag == "Edible" && Input.GetKeyDown(KeyCode.Space))
+        if (collision.gameObject.tag == "Edible" && Input.GetKeyDown(InputFields.interact))
         {
             inventory.AddNumEdibles();
             Destroy(collision.gameObject);

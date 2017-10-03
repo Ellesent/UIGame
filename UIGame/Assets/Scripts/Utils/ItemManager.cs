@@ -19,8 +19,4 @@ public static class ItemManager
    public static Dictionary<string, LockedTypes.LockedStatus> lockedItems = new Dictionary<string, LockedTypes.LockedStatus>();
 
    public static Dictionary<string, Items.ItemStatus> pickupItems = new Dictionary<string, Items.ItemStatus>();
-
-
-    
-
 }
