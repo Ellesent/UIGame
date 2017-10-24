@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.08731618, g: 0.6985294, b: 0.09153141, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1248,6 +1248,7 @@ GameObject:
   - component: {fileID: 665405265}
   - component: {fileID: 665405264}
   - component: {fileID: 665405263}
+  - component: {fileID: 665405266}
   m_Layer: 0
   m_Name: InteractButtonDropDown
   m_TagString: Untagged
@@ -1296,7 +1297,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.10121108, g: 0.7647059, b: 0.29797176, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1375,6 +1376,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 665405261}
+--- !u!114 &665405266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665405261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48186aa6c8e60b40875642f4daa259c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757239954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,6 +2652,7 @@ GameObject:
   - component: {fileID: 2006038974}
   - component: {fileID: 2006038973}
   - component: {fileID: 2006038972}
+  - component: {fileID: 2006038975}
   m_Layer: 0
   m_Name: MovementKeysDropDown
   m_TagString: Untagged
@@ -2688,7 +2701,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.10121108, g: 0.7647059, b: 0.29797176, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2767,6 +2780,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2006038970}
+--- !u!114 &2006038975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2006038970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b577d5a7741d8f48910f4ba14c90882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052700999
 GameObject:
   m_ObjectHideFlags: 0

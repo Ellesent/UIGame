@@ -20,7 +20,7 @@ public class Valve : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
+        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(InputFields.interact))
         {
             Debug.Log("yup");
             turnOn.SetActive(true);

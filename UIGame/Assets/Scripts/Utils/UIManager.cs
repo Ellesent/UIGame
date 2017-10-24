@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
     private void InventoryGui()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(InputFields.openInventory))
         {
             inventoryCanvas.enabled = !inventoryCanvas.enabled;
         }
@@ -70,50 +70,83 @@ public class UIManager : MonoBehaviour
     /// <param name="value">a dynamic float taken from the drop down</param>
     public void TakeInputMovement(int value)
     {
-
-        switch (value)
+        if (Input.GetJoystickNames().Length > 0 && Input.GetJoystickNames()[0] != "")
         {
-            case 0:
-                Debug.Log("WASD");
-                InputFields.left = KeyCode.A;
-                InputFields.right = KeyCode.D;
-                InputFields.up = KeyCode.W;
-                InputFields.down = KeyCode.S;
-                break;
-            case 1:
-                Debug.Log("Arrow Keys");
-                InputFields.left = KeyCode.LeftArrow;
-                InputFields.right = KeyCode.RightArrow;
-                InputFields.up = KeyCode.UpArrow;
-                InputFields.down = KeyCode.DownArrow;
-                break;
-            case 2:
-                Debug.Log("IJKL");
-                InputFields.left = KeyCode.J;
-                InputFields.right = KeyCode.L;
-                InputFields.up = KeyCode.I;
-                InputFields.down = KeyCode.K;
-                break;
-
+            switch(value)
+            {
+                case 0:
+                    InputFields.joystickAxis = "LeftAnalog";
+                    break;
+                case 1:
+                    InputFields.joystickAxis = "RightAnalog";
+                    break;
+            }
+        }
+        else
+        {
+            switch (value)
+            {
+                case 0:
+                    Debug.Log("WASD");
+                    InputFields.left = KeyCode.A;
+                    InputFields.right = KeyCode.D;
+                    InputFields.up = KeyCode.W;
+                    InputFields.down = KeyCode.S;
+                    break;
+                case 1:
+                    Debug.Log("Arrow Keys");
+                    InputFields.left = KeyCode.LeftArrow;
+                    InputFields.right = KeyCode.RightArrow;
+                    InputFields.up = KeyCode.UpArrow;
+                    InputFields.down = KeyCode.DownArrow;
+                    break;
+                case 2:
+                    Debug.Log("IJKL");
+                    InputFields.left = KeyCode.J;
+                    InputFields.right = KeyCode.L;
+                    InputFields.up = KeyCode.I;
+                    InputFields.down = KeyCode.K;
+                    break;
+            }
         }
     }
 
     public void TakeInputSelect(int value)
     {
-        switch (value)
+
+        if (InputFields.checkJoystick())
         {
-            case 0:
-                Debug.Log("Space");
-                InputFields.interact = KeyCode.Space;
-                break;
-            case 1:
-                Debug.Log("E");
-                InputFields.interact = KeyCode.E;
-                break;
-            case 2:
-                Debug.Log("F");
-                InputFields.interact = KeyCode.F;
-                break;
+            Debug.Log("what");
+            switch(value)
+            {
+                case 0:
+                    InputFields.interact = KeyCode.Joystick1Button0;
+                    break;
+                case 1:
+                    InputFields.interact = KeyCode.Joystick1Button2;
+                    break;
+                case 2:
+                    InputFields.interact = KeyCode.Joystick1Button1;
+                    break;
+            }
+        }
+        else
+        {
+            switch (value)
+            {
+                case 0:
+                    Debug.Log("Space");
+                    InputFields.interact = KeyCode.Space;
+                    break;
+                case 1:
+                    Debug.Log("E");
+                    InputFields.interact = KeyCode.E;
+                    break;
+                case 2:
+                    Debug.Log("F");
+                    InputFields.interact = KeyCode.F;
+                    break;
+            }
         }
     }
 }

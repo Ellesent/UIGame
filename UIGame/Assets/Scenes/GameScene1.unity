@@ -157,6 +157,16 @@ Prefab:
       propertyPath: inventoryImage
       value: 
       objectReference: {fileID: 1702400511}
+    - target: {fileID: 114947482772297758, guid: 4643ed47e966d424b86d53e3ce3425c3,
+        type: 2}
+      propertyPath: equippedImage
+      value: 
+      objectReference: {fileID: 1874782375}
+    - target: {fileID: 114947482772297758, guid: 4643ed47e966d424b86d53e3ce3425c3,
+        type: 2}
+      propertyPath: edibleText
+      value: 
+      objectReference: {fileID: 1621231491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4643ed47e966d424b86d53e3ce3425c3, type: 2}
   m_IsPrefabParent: 0
@@ -305,7 +315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 232.9, y: -27.400024}
+  m_AnchoredPosition: {x: 232.9, y: -27.399902}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175085813
@@ -321,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -373,7 +383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.5, y: -32.9}
+  m_AnchoredPosition: {x: 87.5, y: -32.899902}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &184885610
@@ -388,20 +398,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0.7103448, b: 1, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 5b1fa365231d5f940a3429aeea59f0be, type: 3}
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 118
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4037,8 +4047,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.8897059, g: 1, b: 0.95892495, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4307,6 +4317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryImage: {fileID: 1702400511}
+  equippedImage: {fileID: 1874782375}
+  edibleText: {fileID: 1621231491}
 --- !u!1 &737965501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4463,6 +4475,7 @@ RectTransform:
   m_Children:
   - {fileID: 184885609}
   - {fileID: 175085812}
+  - {fileID: 820971204}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4598,8 +4611,9 @@ GameObject:
   - component: {fileID: 770312485}
   - component: {fileID: 770312484}
   - component: {fileID: 770312486}
+  - component: {fileID: 770312487}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Item2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4695,6 +4709,36 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 770312484}
+--- !u!114 &770312487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 770312482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 604756028}
+          m_MethodName: AddImageToEquipped
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 770312484}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &783887461
 GameObject:
   m_ObjectHideFlags: 0
@@ -4840,6 +4884,75 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787215903}
+--- !u!1 &820971203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 820971204}
+  - component: {fileID: 820971206}
+  - component: {fileID: 820971205}
+  m_Layer: 5
+  m_Name: BerryImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &820971204
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820971203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children:
+  - {fileID: 1621231492}
+  m_Father: {fileID: 753772937}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: 50}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &820971205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820971203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 3f721cdc5b265ff449a8d947b213c2ab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &820971206
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820971203}
 --- !u!1 &827134043
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,8 +5116,9 @@ GameObject:
   - component: {fileID: 965922122}
   - component: {fileID: 965922121}
   - component: {fileID: 965922123}
+  - component: {fileID: 965922124}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Item3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5100,6 +5214,36 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 965922121}
+--- !u!114 &965922124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 965922119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 604756028}
+          m_MethodName: AddImageToEquipped
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 965922121}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &973419393
 GameObject:
   m_ObjectHideFlags: 0
@@ -5252,6 +5396,7 @@ GameObject:
   - component: {fileID: 976262386}
   - component: {fileID: 976262385}
   - component: {fileID: 976262384}
+  - component: {fileID: 976262387}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -5304,6 +5449,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976262387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976262383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9d5690d3b3b994e9ca97ec9d5a6de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &982317335
 GameObject:
   m_ObjectHideFlags: 0
@@ -5314,6 +5470,7 @@ GameObject:
   - component: {fileID: 982317337}
   - component: {fileID: 982317336}
   - component: {fileID: 982317338}
+  - component: {fileID: 982317339}
   m_Layer: 0
   m_Name: ground1
   m_TagString: Untagged
@@ -5391,7 +5548,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -9.635577, y: 1.1482296}
+  - {x: -20.245543, y: 1.257236}
   - {x: -7.1320944, y: 1.2714443}
   - {x: -7.0124936, y: 1.2694287}
   - {x: -5.9931684, y: 1.2592394}
@@ -5430,6 +5587,23 @@ EdgeCollider2D:
   - {x: 20.024933, y: 1.101584}
   - {x: 20.36469, y: 1.1883509}
   - {x: 20.88179, y: 1.1834109}
+--- !u!68 &982317339
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 982317335}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -20.177134, y: 9.78076}
+  - {x: -20.274801, y: 1.2507823}
 --- !u!1 &1069674292
 GameObject:
   m_ObjectHideFlags: 0
@@ -5511,8 +5685,9 @@ GameObject:
   - component: {fileID: 1095808339}
   - component: {fileID: 1095808338}
   - component: {fileID: 1095808340}
+  - component: {fileID: 1095808341}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Item6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5608,6 +5783,36 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1095808338}
+--- !u!114 &1095808341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095808336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 604756028}
+          m_MethodName: AddImageToEquipped
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1095808338}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1138959998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,7 +5832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1138959999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5923,12 +6128,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1239128318 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114706774544663478, guid: 9d9c558f35d73d8479b703048e6148d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 319341093}
-  m_Script: {fileID: 11500000, guid: 6559f44712608634493db0cb59273abc, type: 3}
 --- !u!1 &1281527260
 GameObject:
   m_ObjectHideFlags: 0
@@ -6018,7 +6217,7 @@ GameObject:
   - component: {fileID: 1408366167}
   - component: {fileID: 1408366168}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6141,15 +6340,15 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1239128318}
-          m_MethodName: ButtonClickScene
-          m_Mode: 5
+        - m_Target: {fileID: 604756028}
+          m_MethodName: AddImageToEquipped
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1408366164}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: InteriorHouse
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
@@ -6356,8 +6555,9 @@ GameObject:
   - component: {fileID: 1598304113}
   - component: {fileID: 1598304112}
   - component: {fileID: 1598304114}
+  - component: {fileID: 1598304115}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Item5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6453,6 +6653,110 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1598304112}
+--- !u!114 &1598304115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1598304110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 604756028}
+          m_MethodName: AddImageToEquipped
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1598304112}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!1 &1621231491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1621231492}
+  - component: {fileID: 1621231494}
+  - component: {fileID: 1621231493}
+  m_Layer: 5
+  m_Name: BerryText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1621231492
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1621231491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 820971204}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 139.3, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1621231493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1621231491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 5b1fa365231d5f940a3429aeea59f0be, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: sgdfg
+--- !u!222 &1621231494
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1621231491}
 --- !u!1 &1702400511
 GameObject:
   m_ObjectHideFlags: 0
@@ -6832,6 +7136,34 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114369467341006002, guid: 2e41d7f399bf4ce47811a1bbd1587fcd,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Instructions:
+
+        Use A and D, or left and right arrow keys to move
+
+        Use Space to interact with the world (currently used for hiding, picking up
+        items, using items, and doors).
+
+        Press Tab to open and close the inventory
+
+        Use arrow keys in inventory to select an item and equip it (right now difficult
+        to tell what is selected)
+
+
+        Equip your water bottle, walk under the water, and your water bottle will
+        be filled with water
+
+
+        Press E to use an Edible that will refill your Sanity Bar.
+
+
+        Go to the "settings" menu from the main menu to change inputible that will
+        refill your Sanity Bar.
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e41d7f399bf4ce47811a1bbd1587fcd, type: 2}
   m_IsPrefabParent: 0
@@ -6924,8 +7256,9 @@ GameObject:
   - component: {fileID: 1967755435}
   - component: {fileID: 1967755434}
   - component: {fileID: 1967755436}
+  - component: {fileID: 1967755437}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Item4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7021,6 +7354,36 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1967755434}
+--- !u!114 &1967755437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967755432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 604756028}
+          m_MethodName: AddImageToEquipped
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1967755434}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &2040037257
 GameObject:
   m_ObjectHideFlags: 0

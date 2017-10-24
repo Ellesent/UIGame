@@ -42,7 +42,7 @@ public class DoorScript : MonoBehaviour {
     // TODO: Change OnTriggerStay to not check for input
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
+        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(InputFields.interact))
         {
             if (ItemManager.lockedItems[name] == LockedTypes.LockedStatus.NotLocked)
             {
@@ -53,7 +53,7 @@ public class DoorScript : MonoBehaviour {
             else
             {
 
-                if (inventory.IsItemInInventory("tempkey"))
+                if (inventory.GetEquippedItem() == "tempkey")
                 {
                     inventory.RemoveItem("tempkey");
                     ItemManager.lockedItems[name] = LockedTypes.LockedStatus.NotLocked;

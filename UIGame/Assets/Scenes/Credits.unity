@@ -306,7 +306,7 @@ Prefab:
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -131.2
+      value: 65.1
       objectReference: {fileID: 0}
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
@@ -326,7 +326,7 @@ Prefab:
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
@@ -336,7 +336,7 @@ Prefab:
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
@@ -358,12 +358,28 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ButtonClickScene
       objectReference: {fileID: 0}
+    - target: {fileID: 114862355873950714, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5b1fa365231d5f940a3429aeea59f0be,
+        type: 3}
+    - target: {fileID: 114862355873950714, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d98e8b75ad16dc4394f7fb9e10614a6, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &1104951232 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1104951231}
+--- !u!1 &1104951233 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1359517514927158, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
     type: 2}
   m_PrefabInternal: {fileID: 1104951231}
 --- !u!1 &1252350624
@@ -413,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -421,7 +437,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5b1fa365231d5f940a3429aeea59f0be, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -433,27 +449,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Renewable Resource = Sanity Meter
-
-    Refilled with berry edibles
-
-    Taken away when being chased by enemy
-
-
-    Performance Metric = Puzzles
-
-    Better performance if extra puzzles that are not neccesary to progress are completed
-    (Not implemented...)
-
-
-    All assets created by me
-
-
-    Please note that inventory is persistent across all scenes, but item state as
-    well as player position and locked/unlocked doors are not.
-
-    Coming out of a door will reset the player to the beginning of the level, but
-    the items the player picked up will still be in the inventory.'
+  m_Text: "Input screen changes choices based on if a controller is connected or not.\n\nAll
+    UI elements work with a controller\n\n3 Changes that were made:\n\n1. Removed
+    blinking red for map\n2. Change highlight for drop-down\n3. Change sanity meter
+    color to not be red \n\nNote: Going back to the main menu does not reset the state
+    of objects, this will be fixed when save and load are implemented\n\nNote: Objects
+    in inventory do not destroy themselves yet.\nIMPORTANT NOTE: Right now it is difficult
+    to tell when an item is selected in the inventory. for now just use the inventory
+    slots around\nit to know where the focus is.\n\nWood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
+    - modified\nAll other assets created by me\n"
 --- !u!222 &1252350627
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -506,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1104951233}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1375618149

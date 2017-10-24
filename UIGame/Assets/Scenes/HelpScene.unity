@@ -204,7 +204,7 @@ Prefab:
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -131.2
+      value: 65.6
       objectReference: {fileID: 0}
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
@@ -224,7 +224,7 @@ Prefab:
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
@@ -234,7 +234,7 @@ Prefab:
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224038574968478038, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
         type: 2}
@@ -254,6 +254,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d98e8b75ad16dc4394f7fb9e10614a6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &810976894 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1359517514927158, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 810976893}
 --- !u!1 &825565313
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,17 +450,45 @@ Prefab:
       propertyPath: m_Text
       value: 'Instructions:
 
-        Use A and D, or left and right arrow keys to move
+        Use W and D, or left anlog stick to move.
 
-        Use Space to interact with the world (currently used for hiding, picking up
-        items, using items, and doors).
+        Use Space or Joystick A to interact with the world (currently used for hiding,
+        picking up items, using items, and doors).
 
-        Press Tab to open and close the inventory
+        Press Tab or Joystick Y to open and close the inventory
+
+        Use arrow keys, D-Pad, or Analog Stick in inventory to select an item and
+        equip it (right now difficult to tell what is selected)
+
+
+        Equip your water bottle, walk under the water, and your water bottle will
+        be filled with water
+
 
         Press E to use an Edible that will refill your Sanity Bar.
 
 
-        Press Escape or ''i'' at any time for help.'
+        Go to the "settings" menu from the main menu to change input for movement
+        and the select button
+
+
+        Press Escape or Joystick Back at any time for help.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114369467341006002, guid: 2e41d7f399bf4ce47811a1bbd1587fcd,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5b1fa365231d5f940a3429aeea59f0be,
+        type: 3}
+    - target: {fileID: 114369467341006002, guid: 2e41d7f399bf4ce47811a1bbd1587fcd,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114369467341006002, guid: 2e41d7f399bf4ce47811a1bbd1587fcd,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 115
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e41d7f399bf4ce47811a1bbd1587fcd, type: 2}
@@ -606,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 810976894}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1803926514

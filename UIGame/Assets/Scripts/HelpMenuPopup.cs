@@ -19,7 +19,7 @@ public class HelpMenuPopup : MonoBehaviour {
     void Update()
     {
 
-        if ((Input.GetKeyDown(KeyCode.I)) || (Input.GetKeyDown(KeyCode.Escape)))
+        if (Input.GetKeyDown(InputFields.openHelp))
         {
             canvas.enabled = !canvas.enabled;
         }

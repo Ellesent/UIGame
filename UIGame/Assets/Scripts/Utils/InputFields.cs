@@ -5,6 +5,8 @@ using UnityEngine;
 public static class InputFields
 {
 
+    public static string joystickAxis = "LeftAnalog";
+
     public static KeyCode left = KeyCode.A;
     public static KeyCode right = KeyCode.D;
     public static KeyCode up = KeyCode.W;
@@ -14,4 +16,19 @@ public static class InputFields
     public static KeyCode openInventory = KeyCode.Tab;
     public static KeyCode openHelp = KeyCode.Escape;
     public static KeyCode openCraft = KeyCode.H;
+
+    public static bool checkJoystick()
+    {
+        return (Input.GetJoystickNames().Length > 0 && Input.GetJoystickNames()[0] != "");
+    }
+
+    public static void InitialKeys()
+    {
+        if (checkJoystick())
+        {
+            interact = KeyCode.Joystick1Button0;
+            openInventory = KeyCode.Joystick1Button3;
+            openHelp = KeyCode.Joystick1Button6;
+        }
+    }
 }

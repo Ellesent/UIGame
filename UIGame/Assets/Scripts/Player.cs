@@ -88,7 +88,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(InputFields.left))
+        if (Input.GetJoystickNames().Length > 0 && Input.GetJoystickNames()[0] != "")
+        {
+            rb.MovePosition( transform.position + new Vector3(Input.GetAxis(InputFields.joystickAxis), 0) * speed * Time.deltaTime);
+        }
+            if (Input.GetKey(InputFields.left))
         {
             rb.MovePosition(transform.position + new Vector3(-1, 0) * speed * Time.deltaTime);
         }
@@ -124,6 +128,12 @@ public class Player : MonoBehaviour
         {
             inventory.AddNumEdibles();
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Water" && inventory.GetEquippedItem() == "SprayBottle")
+        {
+            Debug.Log("Water and Spray Bottle");
+            inventory.ChangeItemName("SprayBottle", "SprayBottleWater");
         }
     }
 
