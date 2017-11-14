@@ -26,7 +26,10 @@ public static class InputFields
     {
         if (checkJoystick())
         {
-            interact = KeyCode.Joystick1Button0;
+            if (interact == KeyCode.Space || interact == KeyCode.E || interact == KeyCode.F)
+            {
+                interact = KeyCode.Joystick1Button0;
+            }
             openInventory = KeyCode.Joystick1Button3;
             openHelp = KeyCode.Joystick1Button6;
         }
