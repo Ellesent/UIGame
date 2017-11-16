@@ -449,15 +449,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Input screen changes choices based on if a controller is connected or not.\n\nAll
-    UI elements work with a controller\n\n3 Changes that were made:\n\n1. Removed
-    blinking red for map\n2. Change highlight for drop-down\n3. Change sanity meter
-    color to not be red \n\nNote: Going back to the main menu does not reset the state
-    of objects, this will be fixed when save and load are implemented\n\nNote: Objects
-    in inventory do not destroy themselves yet.\nIMPORTANT NOTE: Right now it is difficult
-    to tell when an item is selected in the inventory. for now just use the inventory
-    slots around\nit to know where the focus is.\n\nWood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
-    - modified\nAll other assets created by me\n"
+  m_Text: "3 Imrovements to Navigation:\n\n1. Changed layout of inventory menu\n2.
+    made inventory a radial selection \n3. Made it easier to tell what items are selected
+    in the inventory \n\nOther Changes:\nAdded an intro with short summary of story\nAdded
+    a journal that is opened and closed on side of screen\nJournal will be used for
+    quests and story\n\nChanged Pop up Help Menu to mention all controls and overall
+    be simple\nNote: Going back to the main menu does not reset the state of objects,
+    this will be fixed when save and load are implemented\n\nNote: Objects in inventory
+    do not destroy themselves yet\n\nWood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
+    - modified\n\nJournal background taken from\nhttp://www.powerpointhintergrund.com/uploads/journal-background-17.jpg\n\nAll
+    other assets created by me\n"
 --- !u!222 &1252350627
 CanvasRenderer:
   m_ObjectHideFlags: 0

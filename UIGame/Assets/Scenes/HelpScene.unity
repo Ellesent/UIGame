@@ -448,31 +448,15 @@ Prefab:
     - target: {fileID: 114369467341006002, guid: 2e41d7f399bf4ce47811a1bbd1587fcd,
         type: 2}
       propertyPath: m_Text
-      value: 'Instructions:
-
-        Use W and D, or left anlog stick to move.
-
-        Use Space or Joystick A to interact with the world (currently used for hiding,
-        picking up items, using items, and doors).
-
-        Press Tab or Joystick Y to open and close the inventory
-
-        Use arrow keys, D-Pad, or Analog Stick in inventory to select an item and
-        equip it (right now difficult to tell what is selected)
-
-
-        Equip your water bottle, walk under the water, and your water bottle will
-        be filled with water
-
-
-        Press E to use an Edible that will refill your Sanity Bar.
-
-
-        Go to the "settings" menu from the main menu to change input for movement
-        and the select button
-
-
-        Press Escape or Joystick Back at any time for help.'
+      value: "Instructions:\nUse W and D, or left anlog stick to move.\nUse Space
+        or Joystick A to interact with the world (currently used for hiding, picking
+        up items, using items, and doors).\nPress Tab or Joystick Y to open and close
+        the inventory\nUse arrow keys, D-Pad, or Analog Stick in inventory to select
+        an item and equip it \n\nPress Q/Left Bumper to open/close Journal\n\nEquip
+        your water bottle, walk under the water, and your water bottle will be filled
+        with water\n\nPress E to use an Edible that will refill your Sanity Bar.\n\nGo
+        to the \"settings\" menu from the main menu to change input for movement and
+        the select button\n\nPress Escape or Joystick Back at any time for help."
       objectReference: {fileID: 0}
     - target: {fileID: 114369467341006002, guid: 2e41d7f399bf4ce47811a1bbd1587fcd,
         type: 2}
