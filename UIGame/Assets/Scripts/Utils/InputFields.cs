@@ -16,6 +16,7 @@ public static class InputFields
     public static KeyCode openInventory = KeyCode.Tab;
     public static KeyCode openHelp = KeyCode.Escape;
     public static KeyCode openCraft = KeyCode.H;
+    public static KeyCode seeJournal = KeyCode.Q; 
 
     public static bool checkJoystick()
     {
@@ -32,6 +33,7 @@ public static class InputFields
             }
             openInventory = KeyCode.Joystick1Button3;
             openHelp = KeyCode.Joystick1Button6;
+            seeJournal = KeyCode.Joystick1Button4;
         }
     }
 }
