@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-
+    // The inventory canvas
     public Canvas inventoryCanvas;
-
+  
     // Use this for initialization
     void Start()
     {
 
+        // Try obtaining inventory in scene
         if (inventoryCanvas == null)
         {
             try
@@ -59,7 +62,31 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(InputFields.openInventory))
         {
+
             inventoryCanvas.enabled = !inventoryCanvas.enabled;
+
+
+            Component[] selectables = inventoryCanvas.GetComponentsInChildren<Selectable>();
+
+            GameObject item1 = null;
+
+            foreach (Selectable selectable in selectables)
+            {
+                selectable.interactable = inventoryCanvas.enabled;
+
+                if (selectable.gameObject.name == "Item1")
+                {
+                    item1 = selectable.gameObject;
+                }
+            }
+
+            if (inventoryCanvas.enabled)
+            {
+
+                GameObject image = inventoryCanvas.GetComponent<RectTransform>().GetChild(0).gameObject;
+                EventSystem.current.SetSelectedGameObject(item1, null);
+                
+            }
         }
 
     }
