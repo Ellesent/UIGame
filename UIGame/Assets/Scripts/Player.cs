@@ -15,8 +15,19 @@ public class Player : MonoBehaviour
     bool hiding;
     Rigidbody2D rb;
     bool canhide = false;
+    AudioSource audioSource;
+    AudioClip outsideFootsteps;
+    AudioClip insideFootsteps;
+
+    AudioClip currentFootsteps;
+
+    float timeFootsteps;
+
 
     Image terrorBar;
+
+    // Used for audio
+    bool isMoving;
     #endregion
 
     #region Properties
@@ -32,6 +43,14 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        outsideFootsteps = audioSource.clip;
+        currentFootsteps = outsideFootsteps;
+        isMoving = false;
+
+        timeFootsteps = 0f;
+        // Get audio file for inside from Resources Folder
+
         StartPosition();
        
         try
@@ -85,8 +104,26 @@ public class Player : MonoBehaviour
             terrorBar.fillAmount += 0.3f;
             inventory.RemovedNumEdibles();
         }
-    }
 
+        if (Input.GetKeyDown(InputFields.left) || Input.GetKeyDown(InputFields.right))
+        {
+            isMoving = true;
+        }
+
+        if (Input.GetKeyUp(InputFields.left) || Input.GetKeyUp(InputFields.right))
+        {
+            isMoving = false;
+        }
+
+        if (isMoving)
+        {
+            PlaySound();
+        }
+    }
+       
+    /// <summary>
+    /// Movement code
+    /// </summary>
     private void FixedUpdate()
     {
         if (Input.GetJoystickNames().Length > 0 && Input.GetJoystickNames()[0] != "")
@@ -100,6 +137,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(InputFields.right))
         {
             rb.MovePosition(transform.position + new Vector3(1, 0) * speed * Time.deltaTime);
+
         }
     }
 
@@ -180,6 +218,17 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    void PlaySound()
+    {
+        if (timeFootsteps <= 0)
+        {
+            audioSource.Play();
+            timeFootsteps = 0.5f;
+        }
+
+        timeFootsteps -= Time.deltaTime;
     }
 
 }

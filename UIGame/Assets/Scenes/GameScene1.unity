@@ -7235,11 +7235,6 @@ Prefab:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 604756028}
-    - target: {fileID: 114823964207262066, guid: 7dcf1b4ee3341e8468925f5c09cd3252,
-        type: 2}
-      propertyPath: inventoryCanvas
-      value: 
-      objectReference: {fileID: 247377474}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dcf1b4ee3341e8468925f5c09cd3252, type: 2}
   m_IsPrefabParent: 0
