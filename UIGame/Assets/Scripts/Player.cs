@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     // Event Handling
     EnterHouseEvent enterHouseEvent;
+    EnterHouseSetNextQuestEvent setNextQuest;
     #endregion
 
     #region Properties
@@ -50,12 +51,15 @@ public class Player : MonoBehaviour
     void Start()
     {
         enterHouseEvent = new EnterHouseEvent();
+        setNextQuest = new EnterHouseSetNextQuestEvent();
         EventManager.EnterHouseInvoker(this);
+        //EventManager.EnterHouseSetQuestInvoker(this);
 
         // Mark Entering the house as complete
         if (SceneData.currentScene == "InteriorHouse" && SceneData.previousScene == "GameScene1")
         {
             enterHouseEvent.Invoke("Enter the house", "You have just arrived at the address, and there is only a house. Enter through the front door.");
+            //setNextQuest.Invoke("Explore the house");
         }
 
         // Get the audio component and clip attached to audio source
@@ -142,7 +146,7 @@ public class Player : MonoBehaviour
             isMoving = true;
         }
 
-        if (Input.GetKeyUp(InputFields.left) || Input.GetKeyUp(InputFields.right) || Input.GetAxis(InputFields.joystickAxis) == 0)
+        if (Input.GetKeyUp(InputFields.left) || Input.GetKeyUp(InputFields.right) || (Input.GetJoystickNames().Length > 0 && Input.GetAxis(InputFields.joystickAxis) == 0))
         {
             isMoving = false;
         }
@@ -267,5 +271,7 @@ public class Player : MonoBehaviour
     {
         enterHouseEvent.AddListener(method);
     }
+
+   
 
 }

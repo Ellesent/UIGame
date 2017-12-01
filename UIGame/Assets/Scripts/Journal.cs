@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class Journal : MonoBehaviour {
 
     bool isClosed;
+    bool setNextQuest = false;
     
     // Stuff for Lerping journal open and closed
     float timeStartedLerping;
     RectTransform transformRect;
     Vector2 openPosition;
     Vector2 closedPosition;
+    EnterHouseSetNextQuestEvent setExploreHouseEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -25,13 +27,27 @@ public class Journal : MonoBehaviour {
         CreateQuestList();
         DrawQuest(QuestManager.currentQuest);
 
+        setExploreHouseEvent = new EnterHouseSetNextQuestEvent();
+        setExploreHouseEvent.AddListener(SetQuest);
         EventManager.EnterHouseListener(MarkQuestAsComplete);
+        //EventManager.EnterHouseListenerNextQuest(SetQuest);
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
         ToggleJournal();
+
+        if (setNextQuest)
+        {
+            Debug.Log(transform.GetChild(2).GetComponent<CanvasRenderer>().GetAlpha());
+            if (transform.GetChild(2).GetComponent<CanvasRenderer>().GetAlpha() == 0)
+            {
+                Debug.Log("AM I IN");
+                setExploreHouseEvent.Invoke("Explore the house");
+                setNextQuest = false;
+            }
+        }
 		
 	}
 
@@ -135,6 +151,11 @@ public class Journal : MonoBehaviour {
 
         if (itemsCompleted == items)
         {
+            //Show Text
+            DrawQuest(topQuestName, false);
+            // Play sound
+            GetComponent<AudioSource>().Play();
+
             // open Journal
             OpenJournalForQuestCompletion();
             AnimateJournal(false);
@@ -142,19 +163,27 @@ public class Journal : MonoBehaviour {
             //Click checkmark
             GetComponentInChildren<Toggle>().isOn = true;
 
-            // Play sound
+
 
             // Fade out text
+            Text[] text = GetComponentsInChildren<Text>();
+
+            foreach(Text questText in text)
+            {
+                questText.CrossFadeAlpha(0.0f, 5.0f, false);
+            }
+
+            if (topQuestName == "Enter the house")
+            {
+                setNextQuest = true;
+            }
         }
-
-
-
-
     }
 
     // Set the next quest
     void SetQuest(string questName)
     {
+        GetComponentInChildren<Toggle>().isOn = false;
         QuestManager.currentQuest = questName;
         DrawQuest(QuestManager.currentQuest);
     }
@@ -163,7 +192,7 @@ public class Journal : MonoBehaviour {
     /// Draw Quest on Journal from list of quests
     /// </summary>
     /// <param name="QuestName">The first key quest name in dictionary</param>
-    void DrawQuest(string QuestName)
+    void DrawQuest(string QuestName, bool shouldFadeIn=true)
     {
         Component[] texts = GetComponentsInChildren<Text>();
 
@@ -182,6 +211,13 @@ public class Journal : MonoBehaviour {
                     text.text = "";
                     text.text += quest; 
                 }
+            }
+
+            // If the text should fade in, do so
+            if (shouldFadeIn)
+            {
+                text.gameObject.GetComponent<CanvasRenderer>().SetAlpha(0);
+                text.CrossFadeAlpha(1.0f, 2.0f, false);
             }
         }
     }

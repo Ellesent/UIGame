@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public static class EventManager {
 
     static Player thisEnterHouseInvoker;
+    static Player thisEnterHouseSetQuestInvoker;
     static UnityAction<string, string> thisEnterHouseListener;
     static UnityAction<string> thisEnterHouseListenerSettingNextQuest;
 
@@ -36,21 +37,6 @@ public static class EventManager {
             thisEnterHouseInvoker.AddEnterHouseListener(method);
         }
     }
-
-
-    /// <summary>
-    /// Enter House Listener - set quest
-    /// </summary>
-    /// <param name="method"></param>
-    //public static void EnterHouseListenerNextQuest(UnityAction<string> method)
-    //{
-    //    thisEnterHouseListenerSettingNextQuest = method;
-
-    //    if (thisEnterHouseInvoker != null)
-    //    {
-    //        thisEnterHouseInvoker.AddEnterHouseListener(method);
-    //    }
-    //}
 
 } 
 
