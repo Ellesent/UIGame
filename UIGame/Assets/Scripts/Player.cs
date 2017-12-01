@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     float timeFootsteps;
 
+    Scene currentScene;
+
 
     Image terrorBar;
 
@@ -43,14 +45,31 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Get the audio component and clip attached to audio source
         audioSource = GetComponent<AudioSource>();
         outsideFootsteps = audioSource.clip;
-        currentFootsteps = outsideFootsteps;
-        isMoving = false;
-
+       
+        // Set timer for footsteps
         timeFootsteps = 0f;
-        // Get audio file for inside from Resources Folder
 
+        // Get audio file for inside from Resources Folder
+        insideFootsteps = Resources.Load("Sounds/indoorfootstep") as AudioClip;
+
+        // Get the current scene, and set if footsteps are indoors or outdoors appropriately
+        currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "GameScene1")
+        {
+            currentFootsteps = outsideFootsteps;
+        }
+        else
+        {
+            currentFootsteps = insideFootsteps;
+        }
+
+        // Set the audio source's clip to the correct footstep clip
+        audioSource.clip = currentFootsteps;
+
+        isMoving = false;
         StartPosition();
        
         try
@@ -105,12 +124,12 @@ public class Player : MonoBehaviour
             inventory.RemovedNumEdibles();
         }
 
-        if (Input.GetKeyDown(InputFields.left) || Input.GetKeyDown(InputFields.right))
+        if (Input.GetKeyDown(InputFields.left) || Input.GetKeyDown(InputFields.right) || Input.GetAxis(InputFields.joystickAxis) > 0 || Input.GetAxis(InputFields.joystickAxis) < 0)
         {
             isMoving = true;
         }
 
-        if (Input.GetKeyUp(InputFields.left) || Input.GetKeyUp(InputFields.right))
+        if (Input.GetKeyUp(InputFields.left) || Input.GetKeyUp(InputFields.right) || Input.GetAxis(InputFields.joystickAxis) == 0)
         {
             isMoving = false;
         }

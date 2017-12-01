@@ -12,6 +12,7 @@ TagManager:
   - Pipe
   - Valve
   - Water
+  - EventSystem
   layers:
   - Default
   - TransparentFX

@@ -7235,6 +7235,16 @@ Prefab:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 604756028}
+    - target: {fileID: 58693671585426976, guid: 7dcf1b4ee3341e8468925f5c09cd3252,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -2.2168772
+      objectReference: {fileID: 0}
+    - target: {fileID: 58693671585426976, guid: 7dcf1b4ee3341e8468925f5c09cd3252,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.23201512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dcf1b4ee3341e8468925f5c09cd3252, type: 2}
   m_IsPrefabParent: 0
@@ -8395,7 +8405,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 58
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

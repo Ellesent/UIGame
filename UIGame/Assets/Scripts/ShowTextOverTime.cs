@@ -7,6 +7,7 @@ public class ShowTextOverTime : MonoBehaviour
 {
 
     string text;
+    float duration = 0.08f;
     // Use this for initialization
 
     void Start()
@@ -21,7 +22,20 @@ public class ShowTextOverTime : MonoBehaviour
         while (i < strComplete.Length)
         {
             GetComponent<Text>().text += strComplete[i++];
-            yield return new WaitForSeconds(0.08F);
+            yield return new WaitForSeconds(duration);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(InputFields.interact))
+        {
+            duration = 0.03f;
+        }
+
+        else
+        {
+            duration = 0.08f;
         }
     }
 }
