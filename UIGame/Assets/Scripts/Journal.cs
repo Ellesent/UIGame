@@ -12,16 +12,20 @@ public class Journal : MonoBehaviour {
     RectTransform transformRect;
     Vector2 openPosition;
     Vector2 closedPosition;
+
 	// Use this for initialization
 	void Start () {
 
+        // Start out open, and set open and closed positions
         isClosed = false;
         transformRect = GetComponent<RectTransform>();
         openPosition = transformRect.anchoredPosition;
         closedPosition = new Vector2(openPosition.x - 200, openPosition.y);
 
         CreateQuestList();
-        DrawQuest("Enter the house");
+        DrawQuest(QuestManager.currentQuest);
+
+        EventManager.EnterHouseListener(MarkQuestAsComplete);
 		
 	}
 	
@@ -41,6 +45,13 @@ public class Journal : MonoBehaviour {
         }
 
         AnimateJournal(isClosed);
+    }
+
+    void OpenJournalForQuestCompletion()
+    {
+
+        isClosed = false;
+        timeStartedLerping = Time.time;
     }
 
     /// <summary>
@@ -68,17 +79,90 @@ public class Journal : MonoBehaviour {
     void CreateQuestList()
     {
         // Creating Quests
+
+        // Enter Quests House
         QuestManager.quests.Add("Enter the house", new Dictionary<string, bool>());
         QuestManager.quests["Enter the house"].Add("You have just arrived at the address, and there is only a house. Enter through the front door.", false);
+
+        // Explore the house quest
+        QuestManager.quests.Add("Explore the house", new Dictionary<string, bool>());
+        QuestManager.quests["Explore the house"].Add("You've stepped inside the house. Something doesn't feel right...", false);
+
+        // Pickup Key 
+        QuestManager.quests.Add("Find out where the key goes", new Dictionary<string, bool>());
+        QuestManager.quests["Find out where the key goes"].Add("You have found a key. This probably opens a door somewhere", false);
+
+        // Get past Enemy
+        QuestManager.quests.Add("Get past enemy", new Dictionary<string, bool>());
+        QuestManager.quests["Get past enemy"].Add("That thing doesn't look friendly, I better stay out of its sight", false);
+
+        // Grow plant 
+        QuestManager.quests.Add("Grow the plant", new Dictionary<string, bool>());
+        QuestManager.quests["Grow the plant"].Add("That plant looks weird. Maybe if I put some water on it, it will grow", false);
+        QuestManager.quests["Grow the plant"].Add("Find Water Bottle", false);
+        QuestManager.quests["Grow the plant"].Add("Fill Water Bottle", false);
+        QuestManager.quests["Grow the plant"].Add("Spray Plant", false);
+
+
+
     }
 
-    // Mark a quest as complete
-    void MarkQuestAsComplete(string QuestName)
+   /// <summary>
+   /// Mark a certain quest as complete
+   /// </summary>
+   /// <param name="topQuestName">The first key in the dictionary's name</param>
+   /// <param name="subQuestName">The subquest in nested dictionary</param>
+    void MarkQuestAsComplete(string topQuestName, string subQuestName)
     {
+        Debug.Log("quest is complete");
+        //Mark quest as complete (change bool)
+
+        QuestManager.quests[topQuestName][subQuestName] = true;
+
+        //Check if all subquests under quest are complete. If so...
+
+        int items = QuestManager.quests[topQuestName].Count;
+
+        int itemsCompleted = 0;
+
+        foreach (KeyValuePair<string, bool> quest in QuestManager.quests[topQuestName])
+        {
+            if (quest.Value == true)
+            {
+                itemsCompleted++;
+            }
+        }
+
+        if (itemsCompleted == items)
+        {
+            // open Journal
+            OpenJournalForQuestCompletion();
+            AnimateJournal(false);
+
+            //Click checkmark
+            GetComponentInChildren<Toggle>().isOn = true;
+
+            // Play sound
+
+            // Fade out text
+        }
+
+
+
 
     }
 
-    // Draw Quest in Journal
+    // Set the next quest
+    void SetQuest(string questName)
+    {
+        QuestManager.currentQuest = questName;
+        DrawQuest(QuestManager.currentQuest);
+    }
+
+    /// <summary>
+    /// Draw Quest on Journal from list of quests
+    /// </summary>
+    /// <param name="QuestName">The first key quest name in dictionary</param>
     void DrawQuest(string QuestName)
     {
         Component[] texts = GetComponentsInChildren<Text>();

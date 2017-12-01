@@ -9,10 +9,10 @@ public class DontDestroy : MonoBehaviour {
     {
         DontDestroyOnLoad(this);
 
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
+         if ( gameObject.name == "MainMenuMusic" && FindObjectsOfType(GetType()).Length > 1)
+         {
+             Destroy(gameObject);
+         }
     }
 
     // Use this for initialization

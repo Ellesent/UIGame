@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Player : MonoBehaviour
 
     // Used for audio
     bool isMoving;
+
+    // Event Handling
+    EnterHouseEvent enterHouseEvent;
     #endregion
 
     #region Properties
@@ -45,6 +49,15 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        enterHouseEvent = new EnterHouseEvent();
+        EventManager.EnterHouseInvoker(this);
+
+        // Mark Entering the house as complete
+        if (SceneData.currentScene == "InteriorHouse" && SceneData.previousScene == "GameScene1")
+        {
+            enterHouseEvent.Invoke("Enter the house", "You have just arrived at the address, and there is only a house. Enter through the front door.");
+        }
+
         // Get the audio component and clip attached to audio source
         audioSource = GetComponent<AudioSource>();
         outsideFootsteps = audioSource.clip;
@@ -248,6 +261,11 @@ public class Player : MonoBehaviour
         }
 
         timeFootsteps -= Time.deltaTime;
+    }
+
+    public void AddEnterHouseListener(UnityAction<string,string> method)
+    {
+        enterHouseEvent.AddListener(method);
     }
 
 }
