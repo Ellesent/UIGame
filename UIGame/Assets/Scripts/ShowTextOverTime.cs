@@ -28,7 +28,7 @@ public class ShowTextOverTime : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(InputFields.interact))
+        if (Input.GetKey(InputFields.interact) || Input.GetKey(KeyCode.Joystick1Button1))
         {
             duration = 0.03f;
         }

@@ -464,43 +464,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Quest stuff Added:
-
-    Journal (opened with q or LB) updates with quests - quests are checked off when
-    completed
-
-
-    Other changes:
-
-    More sounds addeed
-
-    Main Menu changed
-
-
-    Note: Objects in inventory do not destroy themselves yet
-
-
-    Wood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
-    - modified
-
-
-    Journal background taken from
-
-    http://www.powerpointhintergrund.com/uploads/journal-background-17.jpg
-
-
-    Sounds:
-
-    Outdoor footsteps from Zapslat
-
-    Indoor footsteps from nbeats on Youtube
-
-    Quest Complete sound from SoundBible
-
-
-    All other assets created by me
-
-'
+  m_Text: "Quest stuff Added:\nJournal (opened with q or LB) updates with quests -
+    quests are checked off when completed\n\nOther changes:\nMore sounds addeed\nMain
+    Menu changed\nText during intro will speed up if interact button is pressed, or
+    if b button on controller is pressed (currently standard interact button on controller
+    is A, \nand if that is pressed the text will be skipped altogether)\n\nNote: Objects
+    in inventory do not destroy themselves yet\n\nWood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
+    - modified\n\nJournal background taken from\nhttp://www.powerpointhintergrund.com/uploads/journal-background-17.jpg\n\nSounds:\nOutdoor
+    footsteps from Zapslat\nIndoor footsteps from nbeats on Youtube\nQuest Complete
+    sound from SoundBible\n\nAll other assets created by me\n"
 --- !u!222 &1252350627
 CanvasRenderer:
   m_ObjectHideFlags: 0
