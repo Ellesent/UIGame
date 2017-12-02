@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System; 
+using System;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour {
 
@@ -29,9 +30,13 @@ public class Enemy : MonoBehaviour {
 
     float whichDirection = 0;
 
+    // Event handling
+    SeeEnemyEvent seeEnemyEvent;
+
 	// Use this for initialization
 	void Start () {
-
+        seeEnemyEvent = new SeeEnemyEvent();
+        EventManager.EnemyInvoker(this);
         transform.position = waypoints[0].position;
         currentWaypoint = waypoints[0];
         target = null;
@@ -174,5 +179,16 @@ public class Enemy : MonoBehaviour {
             speed = 5;
             return;
         }
+    }
+
+    void OnBecameVisible()
+    {
+        Debug.Log("I am visible");
+        seeEnemyEvent.Invoke("Get past enemy");
+    }
+
+   public void addEnemylistener(UnityAction<string> method)
+    {
+        seeEnemyEvent.AddListener(method);
     }
 }

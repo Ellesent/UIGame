@@ -32,9 +32,13 @@ public class Player : MonoBehaviour
     // Used for audio
     bool isMoving;
 
+    static bool hasBeenHere = false;
+
     // Event Handling
     EnterHouseEvent enterHouseEvent;
     EnterHouseSetNextQuestEvent setNextQuest;
+    KeyEvent keyEvent;
+    UseKeyEvent useKeyEvent;
     #endregion
 
     #region Properties
@@ -50,16 +54,26 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        useKeyEvent = new UseKeyEvent();
         enterHouseEvent = new EnterHouseEvent();
         setNextQuest = new EnterHouseSetNextQuestEvent();
+        keyEvent = new KeyEvent();
         EventManager.EnterHouseInvoker(this);
-        //EventManager.EnterHouseSetQuestInvoker(this);
+        EventManager.PickupKeyInvoker(this);
+        EventManager.DoorInvoker(this);
 
         // Mark Entering the house as complete
         if (SceneData.currentScene == "InteriorHouse" && SceneData.previousScene == "GameScene1")
         {
             enterHouseEvent.Invoke("Enter the house", "You have just arrived at the address, and there is only a house. Enter through the front door.");
             //setNextQuest.Invoke("Explore the house");
+        }
+
+        if (SceneData.currentScene == "Room2" && !hasBeenHere)
+        {
+            Debug.Log("Event being invoked?");
+            useKeyEvent.Invoke("Find out where the key goes", "You have found a key. This probably opens a door somewhere");
+
         }
 
         // Get the audio component and clip attached to audio source
@@ -195,6 +209,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Pickup" && Input.GetKeyDown(InputFields.interact))
         {
             inventory.AddItem(collision.gameObject.name);
+
+            if (collision.gameObject.name == "tempkey")
+            {
+                keyEvent.Invoke("Find out where the key goes");
+            }
             collision.gameObject.GetComponent<Pickupable>().Destroy();
            
         }
@@ -272,6 +291,15 @@ public class Player : MonoBehaviour
         enterHouseEvent.AddListener(method);
     }
 
-   
+    public void AddKeyListener(UnityAction<string> method)
+    {
+        keyEvent.AddListener(method);
+    }
+
+    public void AddDoorListener(UnityAction<string, string> method)
+    {
+        Debug.Log("Being listened to?");
+        useKeyEvent.AddListener(method);
+    }
 
 }

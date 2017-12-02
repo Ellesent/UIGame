@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Events;
 
 public class DoorScript : MonoBehaviour {
 
@@ -10,8 +11,13 @@ public class DoorScript : MonoBehaviour {
     //public bool isLocked;
     public LockedTypes.LockedStatus locked;
     Inventory inventory;
+
+    // Event Handling
+  
 	// Use this for initialization
 	void Start () {
+
+      
 
         if (!ItemManager.lockedItems.ContainsKey(name))
         {
@@ -56,10 +62,13 @@ public class DoorScript : MonoBehaviour {
                 if (inventory.GetEquippedItem() == "tempkey")
                 {
                     inventory.RemoveItem("tempkey");
+                   
                     ItemManager.lockedItems[name] = LockedTypes.LockedStatus.NotLocked;
                 }
             }
         }
     }
+
+    
 
 }

@@ -5,10 +5,22 @@ using UnityEngine.Events;
 
 public static class EventManager {
 
+    // Variables for Enter House event
     static Player thisEnterHouseInvoker;
-    static Player thisEnterHouseSetQuestInvoker;
     static UnityAction<string, string> thisEnterHouseListener;
-    static UnityAction<string> thisEnterHouseListenerSettingNextQuest;
+
+    // Variables for Pickup Key event
+    static Player keyInvoker;
+    static UnityAction<string> keyListener;
+
+    // Variables for see enemy event
+    static Enemy enemyInvoker;
+    static UnityAction<string> enemyListener;
+
+    // Variables for using key event
+    static Player doorInvoker;
+    static UnityAction<string, string> doorListener;
+
 
     /// <summary>
     /// Enter House Invoker 
@@ -37,6 +49,62 @@ public static class EventManager {
             thisEnterHouseInvoker.AddEnterHouseListener(method);
         }
     }
+
+    public static void PickupKeyInvoker(Player invoker)
+    {
+        keyInvoker = invoker;
+        if (keyListener != null)
+        {
+            invoker.AddKeyListener(keyListener);
+        }
+    }
+
+    public static void PickupKeyListener(UnityAction<string> method)
+    {
+        keyListener = method;
+        if (keyInvoker != null)
+        {
+            keyInvoker.AddKeyListener(method);
+        }
+    }
+
+    public static void EnemyInvoker(Enemy invoker)
+    {
+        enemyInvoker = invoker;
+        if (enemyListener != null)
+        {
+            invoker.addEnemylistener(keyListener);
+        }
+    }
+
+    public static void EnemyListener(UnityAction<string> method)
+    {
+        enemyListener = method;
+        if (enemyInvoker != null)
+        {
+            enemyInvoker.addEnemylistener(method);
+        }
+    }
+
+    public static void DoorInvoker(Player invoker)
+    {
+        doorInvoker = invoker;
+        if (doorListener != null)
+        {
+            invoker.AddDoorListener(doorListener);
+        }
+    }
+
+    public static void DoorListener(UnityAction<string, string> method)
+    {
+        doorListener = method;
+        if (doorInvoker != null)
+        {
+            doorInvoker.AddDoorListener(method);
+        }
+    }
+
+
 
 } 
 

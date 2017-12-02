@@ -369,6 +369,21 @@ Prefab:
       propertyPath: m_FontData.m_FontSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114130010509755800, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.30973634
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130010509755800, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130010509755800, guid: 7d98e8b75ad16dc4394f7fb9e10614a6,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.29411763
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d98e8b75ad16dc4394f7fb9e10614a6, type: 2}
   m_IsPrefabParent: 0
@@ -449,16 +464,43 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "3 Imrovements to Navigation:\n\n1. Changed layout of inventory menu\n2.
-    made inventory a radial selection \n3. Made it easier to tell what items are selected
-    in the inventory \n\nOther Changes:\nAdded an intro with short summary of story\nAdded
-    a journal that is opened and closed on side of screen\nJournal will be used for
-    quests and story\n\nChanged Pop up Help Menu to mention all controls and overall
-    be simple\nNote: Going back to the main menu does not reset the state of objects,
-    this will be fixed when save and load are implemented\n\nNote: Objects in inventory
-    do not destroy themselves yet\n\nWood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
-    - modified\n\nJournal background taken from\nhttp://www.powerpointhintergrund.com/uploads/journal-background-17.jpg\n\nAll
-    other assets created by me\n"
+  m_Text: 'Quest stuff Added:
+
+    Journal (opened with q or LB) updates with quests - quests are checked off when
+    completed
+
+
+    Other changes:
+
+    More sounds addeed
+
+    Main Menu changed
+
+
+    Note: Objects in inventory do not destroy themselves yet
+
+
+    Wood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
+    - modified
+
+
+    Journal background taken from
+
+    http://www.powerpointhintergrund.com/uploads/journal-background-17.jpg
+
+
+    Sounds:
+
+    Outdoor footsteps from Zapslat
+
+    Indoor footsteps from nbeats on Youtube
+
+    Quest Complete sound from SoundBible
+
+
+    All other assets created by me
+
+'
 --- !u!222 &1252350627
 CanvasRenderer:
   m_ObjectHideFlags: 0

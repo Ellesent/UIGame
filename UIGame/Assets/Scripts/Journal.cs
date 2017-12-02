@@ -27,10 +27,13 @@ public class Journal : MonoBehaviour {
         CreateQuestList();
         DrawQuest(QuestManager.currentQuest);
 
+        // Event stuff
         setExploreHouseEvent = new EnterHouseSetNextQuestEvent();
         setExploreHouseEvent.AddListener(SetQuest);
         EventManager.EnterHouseListener(MarkQuestAsComplete);
-        //EventManager.EnterHouseListenerNextQuest(SetQuest);
+        EventManager.PickupKeyListener(SetQuest);
+        EventManager.EnemyListener(SetQuest);
+        EventManager.DoorListener(MarkQuestAsComplete);
 		
 	}
 	
@@ -40,10 +43,9 @@ public class Journal : MonoBehaviour {
 
         if (setNextQuest)
         {
-            Debug.Log(transform.GetChild(2).GetComponent<CanvasRenderer>().GetAlpha());
+           
             if (transform.GetChild(2).GetComponent<CanvasRenderer>().GetAlpha() == 0)
             {
-                Debug.Log("AM I IN");
                 setExploreHouseEvent.Invoke("Explore the house");
                 setNextQuest = false;
             }
@@ -65,9 +67,11 @@ public class Journal : MonoBehaviour {
 
     void OpenJournalForQuestCompletion()
     {
-
-        isClosed = false;
-        timeStartedLerping = Time.time;
+        if (isClosed == true)
+        {
+            isClosed = false;
+            timeStartedLerping = Time.time;
+        }
     }
 
     /// <summary>
@@ -183,6 +187,9 @@ public class Journal : MonoBehaviour {
     // Set the next quest
     void SetQuest(string questName)
     {
+        // Open Journal
+        OpenJournalForQuestCompletion();
+        AnimateJournal(isClosed);
         GetComponentInChildren<Toggle>().isOn = false;
         QuestManager.currentQuest = questName;
         DrawQuest(QuestManager.currentQuest);
