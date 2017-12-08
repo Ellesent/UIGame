@@ -20,7 +20,7 @@ public class FadeInUI : MonoBehaviour {
         }
         else
         {
-            GetComponent<Text>().CrossFadeAlpha(1.0f, 5.0f, false);
+            GetComponent<Text>().CrossFadeAlpha(1.0f, 3.0f, false);
         }
 
         //Get event system
