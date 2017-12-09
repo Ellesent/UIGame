@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     EnterHouseSetNextQuestEvent setNextQuest;
     KeyEvent keyEvent;
     UseKeyEvent useKeyEvent;
+
+    TutorialBehavior tutorialText;
     #endregion
 
     #region Properties
@@ -62,11 +64,28 @@ public class Player : MonoBehaviour
         EventManager.PickupKeyInvoker(this);
         EventManager.DoorInvoker(this);
 
+        // Find tutorial text UI
+        try
+        {
+            tutorialText = GameObject.Find("TutorialText").GetComponent<TutorialBehavior>();
+        }
+        catch (NullReferenceException)
+        {
+            {
+                Debug.Log("Can't find tutorial text, moving on");
+            }
+
+        }
+
         // Mark Entering the house as complete
         if (SceneData.currentScene == "InteriorHouse" && SceneData.previousScene == "GameScene1")
         {
             enterHouseEvent.Invoke("Enter the house", "You have just arrived at the address, and there is only a house. Enter through the front door.");
-            //setNextQuest.Invoke("Explore the house");
+
+            if (SceneData.numDeaths >= 2)
+            {
+                tutorialText.SetText("HINT: follow the enemy, hide in the closet, and wait for the enemy to pass by. But, don't get too close!");
+            }
         }
 
         if (SceneData.currentScene == "Room2" && !hasBeenHere)
@@ -103,6 +122,7 @@ public class Player : MonoBehaviour
         isMoving = false;
         StartPosition();
        
+        // Find sanity bar
         try
         {
             terrorBar = GameObject.Find("TerrorBar").GetComponent<Image>();
@@ -112,6 +132,7 @@ public class Player : MonoBehaviour
             Debug.Log("Couldn't find terrorBar, moving on");
         }
 
+        // Find inventory UI
         if (inventory == null)
         {
             try
@@ -124,6 +145,8 @@ public class Player : MonoBehaviour
             }
 
         }
+
+       
 
         hiding = false;
         rb = GetComponent<Rigidbody2D>();
@@ -180,7 +203,8 @@ public class Player : MonoBehaviour
         {
             rb.MovePosition( transform.position + new Vector3(Input.GetAxis(InputFields.joystickAxis), 0) * speed * Time.deltaTime);
         }
-            if (Input.GetKey(InputFields.left))
+
+        if (Input.GetKey(InputFields.left))
         {
             rb.MovePosition(transform.position + new Vector3(-1, 0) * speed * Time.deltaTime);
         }
@@ -191,12 +215,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-
-    }
-
+ 
     // TODO don't check for input in OnTriggerStay
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -213,6 +232,7 @@ public class Player : MonoBehaviour
             if (collision.gameObject.name == "tempkey")
             {
                 keyEvent.Invoke("Find out where the key goes");
+                tutorialText.SetText("Press " + InputFields.inventoryButton + " to open the inventory. Select items in the inventory to equip them");
             }
             collision.gameObject.GetComponent<Pickupable>().Destroy();
            

@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
 
+        Cursor.visible = false; 
+
         // Try obtaining inventory in scene
         if (inventoryCanvas == null)
         {
@@ -53,6 +55,9 @@ public class UIManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Close the application when quit is pressed
+    /// </summary>
     public void ButtonClickQuit()
     {
         Application.Quit();

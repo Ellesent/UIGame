@@ -6,4 +6,6 @@ public static class SceneData
 {
    public static string previousScene;
     public static string currentScene = "GameScene1";
+
+    public static int numDeaths = 0;
 }

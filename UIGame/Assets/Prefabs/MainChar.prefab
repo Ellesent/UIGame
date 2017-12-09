@@ -146,9 +146,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.19982067, y: -2.2228205}
+  m_Offset: {x: -0.19982067, y: -2.2168772}
   serializedVersion: 2
-  m_Radius: 0.23795931
+  m_Radius: 0.23201512
 --- !u!61 &61356714014556028
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -192,7 +192,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4003037e01adc3d419f1a25c5f23f0bd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.311
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

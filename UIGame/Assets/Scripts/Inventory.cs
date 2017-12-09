@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour {
 
     public GameObject edibleText;
 
+    public static Inventory instance;
+
     #region Properties
     public string GetEquippedItem()
     {
@@ -43,7 +45,17 @@ public class Inventory : MonoBehaviour {
     // Use this for initialization
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
     void Start () {
 		

@@ -13,6 +13,8 @@ TagManager:
   - Valve
   - Water
   - EventSystem
+  - Journal
+  - DeleteMe
   layers:
   - Default
   - TransparentFX

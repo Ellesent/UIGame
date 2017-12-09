@@ -16,10 +16,16 @@ public class SceneTransition : MonoBehaviour {
 		
 	}
 
+    // Transfer to another scene if player collides with object (used for death)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (sceneName == "Death")
+            {
+                SceneData.numDeaths++;
+                Destroy(GameObject.Find("EventSystem"));
+            }
             SceneData.previousScene = SceneManager.GetActiveScene().name;
             SceneData.currentScene = sceneName;
             SceneManager.LoadScene(sceneName);

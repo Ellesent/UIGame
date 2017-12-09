@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-public class Journal : MonoBehaviour {
+public class Journal : MonoBehaviour
+{
 
     bool isClosed;
     bool setNextQuest = false;
-    
+
     // Stuff for Lerping journal open and closed
     float timeStartedLerping;
     RectTransform transformRect;
@@ -15,8 +17,27 @@ public class Journal : MonoBehaviour {
     Vector2 closedPosition;
     EnterHouseSetNextQuestEvent setExploreHouseEvent;
 
-	// Use this for initialization
-	void Start () {
+    public static Journal instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
+
+
+            return;
+        }
+    }
+
+    // Use this for initialization
+    void Start()
+    {
 
         // Start out open, and set open and closed positions
         isClosed = false;
@@ -34,24 +55,25 @@ public class Journal : MonoBehaviour {
         EventManager.PickupKeyListener(SetQuest);
         EventManager.EnemyListener(SetQuest);
         EventManager.DoorListener(MarkQuestAsComplete);
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         ToggleJournal();
 
         if (setNextQuest)
         {
-           
+
             if (transform.GetChild(2).GetComponent<CanvasRenderer>().GetAlpha() == 0)
             {
                 setExploreHouseEvent.Invoke("Explore the house");
                 setNextQuest = false;
             }
         }
-		
-	}
+
+    }
 
     void ToggleJournal()
     {
@@ -59,7 +81,7 @@ public class Journal : MonoBehaviour {
         {
             isClosed = !isClosed;
             timeStartedLerping = Time.time;
-            
+
         }
 
         AnimateJournal(isClosed);
@@ -80,7 +102,7 @@ public class Journal : MonoBehaviour {
     /// <param name="closing"></param>
     void AnimateJournal(bool closing)
     {
-       
+
         float timeSinceStarted = Time.time - timeStartedLerping;
         float timeTakenDuringLerp = 1f;
         float percentageComplete = timeSinceStarted / timeTakenDuringLerp;
@@ -101,6 +123,7 @@ public class Journal : MonoBehaviour {
         // Creating Quests
 
         // Enter Quests House
+
         QuestManager.quests.Add("Enter the house", new Dictionary<string, bool>());
         QuestManager.quests["Enter the house"].Add("You have just arrived at the address, and there is only a house. Enter through the front door.", false);
 
@@ -124,14 +147,13 @@ public class Journal : MonoBehaviour {
         QuestManager.quests["Grow the plant"].Add("Spray Plant", false);
 
 
-
     }
 
-   /// <summary>
-   /// Mark a certain quest as complete
-   /// </summary>
-   /// <param name="topQuestName">The first key in the dictionary's name</param>
-   /// <param name="subQuestName">The subquest in nested dictionary</param>
+    /// <summary>
+    /// Mark a certain quest as complete
+    /// </summary>
+    /// <param name="topQuestName">The first key in the dictionary's name</param>
+    /// <param name="subQuestName">The subquest in nested dictionary</param>
     void MarkQuestAsComplete(string topQuestName, string subQuestName)
     {
         Debug.Log("quest is complete");
@@ -172,7 +194,7 @@ public class Journal : MonoBehaviour {
             // Fade out text
             Text[] text = GetComponentsInChildren<Text>();
 
-            foreach(Text questText in text)
+            foreach (Text questText in text)
             {
                 questText.CrossFadeAlpha(0.0f, 5.0f, false);
             }
@@ -199,7 +221,7 @@ public class Journal : MonoBehaviour {
     /// Draw Quest on Journal from list of quests
     /// </summary>
     /// <param name="QuestName">The first key quest name in dictionary</param>
-    void DrawQuest(string QuestName, bool shouldFadeIn=true)
+    void DrawQuest(string QuestName, bool shouldFadeIn = true)
     {
         Component[] texts = GetComponentsInChildren<Text>();
 
@@ -212,11 +234,11 @@ public class Journal : MonoBehaviour {
             else
             {
                 List<string> keyList = new List<string>(QuestManager.quests[QuestName].Keys);
-                
+
                 foreach (string quest in keyList)
                 {
                     text.text = "";
-                    text.text += quest; 
+                    text.text += quest;
                 }
             }
 

@@ -68,7 +68,6 @@ public class Enemy : MonoBehaviour {
             transform.position =  Vector2.MoveTowards(transform.position, target.position, movementDistance);
             float newx = transform.position.x;
             whichDirection = newx - origx;
-            Debug.Log("WHICHDIRECTION = " + whichDirection);
             terrorBar.fillAmount -= 0.001f;
 
             // Lost player, go searching
@@ -92,9 +91,10 @@ public class Enemy : MonoBehaviour {
     {
         RayCastPlayer();
     }
-
-    //TODO Use raycasts or "distance cone" instead of collision for player detection
-
+    
+    /// <summary>
+    /// Use raycasting to see if player is in enemy's sight
+    /// </summary>
     void RayCastPlayer()
     {
        
@@ -119,7 +119,9 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-   
+   /// <summary>
+   /// If the player has been detected, have the enemy investigate by walking in the same direction
+   /// </summary>
     private void DetectMode()
     {
         Debug.Log("detect mode on");
@@ -143,8 +145,12 @@ public class Enemy : MonoBehaviour {
        
     }
 
+    /// <summary>
+    /// Patrol the area by moving to each waypoint
+    /// </summary>
     private void Walk()
     {
+        // Check which waypoint the current one is and move to the other one
         if (currentWaypoint == waypoints[0])
         {
 

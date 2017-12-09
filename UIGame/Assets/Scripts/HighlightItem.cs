@@ -44,7 +44,7 @@ public class HighlightItem : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnDeselect(BaseEventData eventData)
     {
-        Debug.Log("I am not selected");
+        //Debug.Log("I am not selected");
         image.color = origColor;
         select = false;
     }

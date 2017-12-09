@@ -7,6 +7,8 @@ public static class InputFields
 
     public static string joystickAxis = "LeftAnalog";
 
+    public static string inventoryButton = "Tab";
+
     public static KeyCode left = KeyCode.A;
     public static KeyCode right = KeyCode.D;
     public static KeyCode up = KeyCode.W;
@@ -32,6 +34,7 @@ public static class InputFields
                 interact = KeyCode.Joystick1Button0;
             }
             openInventory = KeyCode.Joystick1Button3;
+            inventoryButton = "the Y Button";
             openHelp = KeyCode.Joystick1Button6;
             seeJournal = KeyCode.Joystick1Button4;
         }
