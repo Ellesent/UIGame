@@ -22,6 +22,8 @@ public class DeathScene : MonoBehaviour {
         ItemManager.lockedItems.Clear();
         ItemManager.pickupItems.Clear();
 
+        SceneData.numTriesOpeningDoor = 0;
+
     }
 	// Use this for initialization
 	void Start () {

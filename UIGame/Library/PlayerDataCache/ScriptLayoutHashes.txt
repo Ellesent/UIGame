@@ -148,3 +148,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Pickupable
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Journal
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TutorialBehavior
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DeathScene
+4589d706f9f4bd110699208a38cbd0c2 Assembly-CSharp.dll:.ClosetSounds

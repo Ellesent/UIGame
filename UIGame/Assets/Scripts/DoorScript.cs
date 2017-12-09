@@ -12,12 +12,26 @@ public class DoorScript : MonoBehaviour {
     public LockedTypes.LockedStatus locked;
     Inventory inventory;
 
+    TutorialBehavior tutorialText;
+
     // Event Handling
   
 	// Use this for initialization
 	void Start () {
 
-      
+        try
+        {
+            tutorialText = GameObject.Find("TutorialText").GetComponent<TutorialBehavior>();
+        }
+        catch (NullReferenceException)
+        {
+            {
+                Debug.Log("Can't find tutorial text, moving on");
+            }
+
+        }
+
+
 
         if (!ItemManager.lockedItems.ContainsKey(name))
         {
@@ -58,12 +72,22 @@ public class DoorScript : MonoBehaviour {
             }
             else
             {
-
+              
                 if (inventory.GetEquippedItem() == "tempkey")
                 {
                     inventory.RemoveItem("tempkey");
                    
                     ItemManager.lockedItems[name] = LockedTypes.LockedStatus.NotLocked;
+                }
+                else
+                {
+                    SceneData.numTriesOpeningDoor++;
+                    GetComponent<AudioSource>().Play();
+
+                    if (SceneData.numTriesOpeningDoor >= 3)
+                    {
+                        tutorialText.SetText("HINT: If a door is locked, you will have to use a key. Make sure to equip one from the inventory before trying to open a locked door.");
+                    }
                 }
             }
         }

@@ -195,6 +195,7 @@ RectTransform:
   m_Children:
   - {fileID: 1252350625}
   - {fileID: 1104951232}
+  - {fileID: 909112540}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -251,6 +252,86 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 823334653}
   m_Script: {fileID: 11500000, guid: 6559f44712608634493db0cb59273abc, type: 3}
+--- !u!1 &909112539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 909112540}
+  - component: {fileID: 909112542}
+  - component: {fileID: 909112541}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &909112540
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909112539}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 558924731}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -95}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &909112541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909112539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\nWood background taken from\nhttp://backgroundlabs.com/item/dark-wood-panel-background/
+    - modified\n\nJournal background taken from \nhttp://www.powerpointhintergrund.com/uploads/journal-background-17.jpg\n\nBook
+    on main menu taken from (https://wallpapertag.com/img/386872\n\nButton background
+    taken from http://amysnotdeadyet.com/stuff/spiral-vines-bookmark.jpg\n\nSounds:\nOutdoor
+    footsteps from Zapslat\nIndoor footsteps from nbeats on Youtube\nQuest Complete
+    sound from SoundBible\nCloset sounds from Sound Jay\nLocked door sound by freesound\n\nAll
+    other assets created by me\n"
+--- !u!222 &909112542
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909112539}
 --- !u!1001 &1104951231
 Prefab:
   m_ObjectHideFlags: 0
@@ -427,9 +508,9 @@ RectTransform:
   m_Father: {fileID: 558924731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 52}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 137, y: -106}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252350626
@@ -444,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -452,27 +533,28 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5b1fa365231d5f940a3429aeea59f0be, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Quest stuff Added:\nJournal (opened with q or LB) updates with quests -
-    quests are checked off when completed\n\nOther changes:\nMore sounds addeed\nMain
-    Menu changed\nText during intro will speed up if interact button is pressed, or
-    if b button on controller is pressed (currently standard interact button on controller
-    is A, \nand if that is pressed the text will be skipped altogether)\n\nNote: Objects
-    in inventory do not destroy themselves yet\n\nWood background taken from http://backgroundlabs.com/item/dark-wood-panel-background/
-    - modified\n\nJournal background taken from\nhttp://www.powerpointhintergrund.com/uploads/journal-background-17.jpg\n\nSounds:\nOutdoor
-    footsteps from Zapslat\nIndoor footsteps from nbeats on Youtube\nQuest Complete
-    sound from SoundBible\n\nAll other assets created by me\n"
+  m_Text: "Tutorial stuff added:\nAdded basic tutorial pop-ups that changed based
+    on input\n\nContext-Sensitive Help: \n\tA hint will pop up if you die twice by
+    the enemy\n\tA hint will pop up if you try opening the locked door\n\t3 times
+    without equipping the key\n\nNavigation Improvements:\nInventory is radial\nInventory
+    is not transparent, so items can be seen on dark backgrounds\nInventory slots
+    are highlighted even if an item is in it - so seeing what is \nselected is easier\n\nQuest
+    Stuff:\nAdded Journal that updates when new quests are added\nQuests are checked
+    off when completed, and a sound is played\n\nOther changes:\nMore sound effects
+    added\nState of game is reset when returning to main menu\nMajor bug fixes\nNote:
+    Objects in inventory do not destroy themselves yet\n\n"
 --- !u!222 &1252350627
 CanvasRenderer:
   m_ObjectHideFlags: 0

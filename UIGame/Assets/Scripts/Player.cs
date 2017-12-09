@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     AudioClip outsideFootsteps;
     AudioClip insideFootsteps;
 
+    ClosetSounds closet;
+
     AudioClip currentFootsteps;
 
     float timeFootsteps;
@@ -86,6 +88,12 @@ public class Player : MonoBehaviour
             {
                 tutorialText.SetText("HINT: follow the enemy, hide in the closet, and wait for the enemy to pass by. But, don't get too close!");
             }
+        }
+
+        if (SceneData.currentScene == "InteriorHouse")
+        {
+            Debug.Log("did I get closet");
+            closet = GameObject.Find("tempcloset").GetComponent<ClosetSounds>();
         }
 
         if (SceneData.currentScene == "Room2" && !hasBeenHere)
@@ -163,10 +171,12 @@ public class Player : MonoBehaviour
 
                 if (hiding)
                 {
+                    closet.PlayOpen();
                     UnHide();
                 }
                 else
                 {
+                    closet.PlayClosed();
                     Hide();
                 }
             }
